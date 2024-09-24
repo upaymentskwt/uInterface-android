@@ -1,3 +1,0 @@
-com.upayment.myapplication.test
-style WhiteBackgroundDialogTheme
-style WhiteBackgroundTheme
