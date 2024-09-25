@@ -9,8 +9,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.google.gson.Gson
+import com.upayment.upaymentsdk.UInterfaceCallBack
 import com.upayment.upaymentsdk.UInterfaceSDK
-import com.upayment.upaymentsdk.UPaymentCallBack
 import com.upayment.upaymentsdk.constants.Environment
 import com.upayment.upaymentsdk.models.UPaymentData
 import com.upayment.upaymentsdk.models.addcard.request.addCardCustomer
@@ -27,7 +27,7 @@ import com.upayment.upaymentsdk.models.refund.singlerefund.payload.SingleRefundP
 import com.upayment.upaymentsdk.models.refund.singlerefund.response.SingleDeleteRefundResponse
 import com.upayment.upaymentsdk.models.refund.singlerefund.response.SingleRefundResponse
 
-class TestKotlin : AppCompatActivity(), UPaymentCallBack, OnClickListener {
+class TestKotlin : AppCompatActivity(), UInterfaceCallBack, OnClickListener {
 
     private var generatedInvoiceIdMultiRefund: String? = ""
     private var orderIdMultiRefund: String? = ""
