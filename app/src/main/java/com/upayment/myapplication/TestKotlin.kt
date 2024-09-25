@@ -8,6 +8,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.google.gson.Gson
 import com.upayment.upaymentsdk.UInterfaceSDK
 import com.upayment.upaymentsdk.UPaymentCallBack
 import com.upayment.upaymentsdk.constants.Environment
@@ -85,6 +86,8 @@ class TestKotlin : AppCompatActivity(), UPaymentCallBack, OnClickListener {
 
         // Get Customer Unique Token
         //  UPaymentGateway.getInstance().getCustomerUniqueToken(String(),this)
+        tvWhiteLabel.setBackgroundColor(ContextCompat.getColor(this, R.color.gray))
+        tvNonWhiteLabel.setBackgroundColor(ContextCompat.getColor(this, R.color.green))
     }
 
     private fun callSingleDeleteRefundApi() {
@@ -315,7 +318,7 @@ class TestKotlin : AppCompatActivity(), UPaymentCallBack, OnClickListener {
         runOnUiThread(Runnable {
             Toast.makeText(
                 this@TestKotlin,
-                paymentData.result + "TrackID" + paymentData.trackID,
+                Gson().toJson(paymentData),
                 Toast.LENGTH_SHORT
             ).show()
         })
@@ -507,7 +510,7 @@ class TestKotlin : AppCompatActivity(), UPaymentCallBack, OnClickListener {
     private fun callAddCard() {
         val addCardCustomer = addCardCustomer {
             returnUrl = "https://upayments.com/en/"
-            customerUniqueToken = 889867836
+            customerUniqueToken = 889867836//1234567890844
         }
 
         UInterfaceSDK.addCardDetails(addCardCustomer, this)
