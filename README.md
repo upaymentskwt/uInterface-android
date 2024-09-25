@@ -4,20 +4,23 @@
 uInterfaceSDK is a versatile SDK designed to simplify the integration of user interface components and payment processing features into your Android applications. It includes a comprehensive PaymentSDK module that facilitates seamless payment processing across multiple projects. This guide will walk you through the steps to integrate and use the SDK in your project.
 
 
+
 ## Table of Contents
 
-- [Requirements](https://github.com/upaymentskwt/uInterface-android?tab=readme-ov-file#requirements)
-- [Installation Guide](https://github.com/upaymentskwt/uInterface-android?tab=readme-ov-file#installation)
-- [Integration Guide](https://github.com/upaymentskwt/uInterface-android?tab=readme-ov-file#integration-steps)
-- [Usage](https://github.com/upaymentskwt/uInterface-android?tab=readme-ov-file#usage)
-- [Example](https://github.com/upaymentskwt/uInterface-android?tab=readme-ov-file#example)
-- [Troubleshooting](https://github.com/upaymentskwt/uInterface-android?tab=readme-ov-file#troubleshooting)
-- [FAQ](https://github.com/upaymentskwt/uInterface-android?tab=readme-ov-file#faqs)
+- [Requirements](#requirements)
+- [Installation Guide](#installation-guide)
+- [Integration Guide](#integration-guide)
+- [Usage](#usage)
+- [Example](#example)
+- [Troubleshooting](#troubleshooting)
+- [FAQs](#faqs)
+
 
 
 ## Requirements
 
 - Android Studio Koala Feature Drop - 2024.1.2 and Later
+
 
 
 ## Installation Guide
@@ -60,6 +63,8 @@ Follow the steps below to integrate the `uinterfacesdk.aar` library into your An
 
 #### Step 4: Sync the Project
 - After placing the `uinterfacesdk.aar` file and updating the `build.gradle`, sync the project with Gradle files to complete the installation.
+
+
 
 
 ## Integration Guide
@@ -105,6 +110,8 @@ Follow these steps to integrate and initialize the UInterface SDK into your Andr
   - **ENABLE_LOGGING**: Set to `true` to enable logging or `false` to disable it.
 
 You're all set! The uInterface SDK is now ready for use in your application.
+
+
 
 
 ## Usage
@@ -198,11 +205,33 @@ Below is a detailed breakdown of the payment processing flow using the uInterfac
 - **Congratulations!** You have successfully set up the charge payment flow using the UInterface SDK.
 
 
+
+
 ## Example
 
 For a complete example, check out our sample projects:
 
 - [Android Sample Project](https://github.com/upaymentskwt/uInterface-android)
+
+
+
+
+
+## Troubleshooting
+
+- **Issue: Unable to find the `uinterfacesdk.aar` file after download.**  
+  **Solution:** Ensure you have downloaded the sample project correctly and check the path `app/libs/uinterfacesdk.aar`. If the `libs` folder does not exist, create it manually and place the `.aar` file inside.
+
+- **Issue: The SDK initialization fails with a null pointer exception.**  
+  **Solution:** Verify that you have correctly initialized the SDK in the `onCreate()` method of your `Application` class. Ensure that `API_KEY`, `Environment`, and `ENABLE_LOGGING` parameters are set correctly.
+
+- **Issue: Payment processing callback methods are not being called.**  
+  **Solution:** Ensure that your class implements the `UInterfaceCallBack` interface and that you are passing the correct context when calling `UInterfaceSDK.processPayment(eventCharge, this)`.
+
+- **Issue: The app crashes when attempting to show a Toast message.**  
+  **Solution:** Make sure that the `runOnUiThread` method is being called from a valid UI thread context. Double-check that you are in an `Activity` or `Fragment` when trying to display the Toast.
+
+
 
 
 ## FAQs
