@@ -7,7 +7,7 @@ import android.view.View.OnClickListener
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
+import androidx.appcompat.widget.SwitchCompat
 import com.google.gson.Gson
 import com.upayment.upaymentsdk.UInterfaceCallBack
 import com.upayment.upaymentsdk.UInterfaceSDK
@@ -46,6 +46,8 @@ class TestKotlin : AppCompatActivity(), UInterfaceCallBack, OnClickListener {
     private lateinit var tvNonWhiteLabel: TextView
     private lateinit var tvWhiteLabel: TextView
     private lateinit var tvGetCustomerToken: TextView
+    private lateinit var swtich: SwitchCompat
+
     private var isWhiteLabeledStatus = false
 
     @SuppressLint("MissingInflatedId")
@@ -69,6 +71,7 @@ class TestKotlin : AppCompatActivity(), UInterfaceCallBack, OnClickListener {
         tvNonWhiteLabel = findViewById(R.id.tvNonWhiteLabel)
         tvWhiteLabel = findViewById(R.id.tvWhiteLabel)
         tvGetCustomerToken = findViewById(R.id.tvGetCustomerToken)
+        swtich = findViewById(R.id.swtich)
 
         tvChargeAPI.setOnClickListener(this)
         tvChargeAPI2.setOnClickListener(this)
@@ -79,15 +82,43 @@ class TestKotlin : AppCompatActivity(), UInterfaceCallBack, OnClickListener {
         tvMultiDeleteRefund.setOnClickListener(this)
         tvAddCard.setOnClickListener(this)
         tvRetrieveCard.setOnClickListener(this)
-        tvNonWhiteLabel.setOnClickListener(this)
-        tvWhiteLabel.setOnClickListener(this)
+//        tvNonWhiteLabel.setOnClickListener(this)
+//        tvWhiteLabel.setOnClickListener(this)
         tvGetCustomerToken.setOnClickListener(this)
 
 
         // Get Customer Unique Token
         //  UPaymentGateway.getInstance().getCustomerUniqueToken(String(),this)
-        tvWhiteLabel.setBackgroundColor(ContextCompat.getColor(this, R.color.gray))
-        tvNonWhiteLabel.setBackgroundColor(ContextCompat.getColor(this, R.color.green))
+//        tvWhiteLabel.setBackgroundColor(ContextCompat.getColor(this, R.color.gray))
+//        tvNonWhiteLabel.setBackgroundColor(ContextCompat.getColor(this, R.color.green))
+
+        // this is only testing
+        swtich.setOnCheckedChangeListener { _, isChecked ->
+            isWhiteLabeledStatus = isChecked
+            if (isChecked) {
+                val tokenWhiteLabel = "e66a94d579cf75fba327ff716ad68c53aae11528"
+                //Move to Application
+                // No Need to call this :At a time one Auth Header Token will be used .
+                // If you like to switch from Non white label to white label or wise versa then need to call
+                UInterfaceSDK.initializeDebugOnly(
+                    applicationContext,
+                    tokenWhiteLabel,
+                    Environment.PRODUCTION,
+                    true
+                )
+            } else {
+                val tokenNonWhiteLabel = "jtest123"
+                //Move to Application
+                // No Need to call this :At a time one Auth Header Token will be used .
+                // If you like to switch from Non white label to white label or wise versa then need to call
+                UInterfaceSDK.initializeDebugOnly(
+                    applicationContext,
+                    tokenNonWhiteLabel,
+                    Environment.SANDBOX,
+                    true
+                )
+            }
+        }
     }
 
     private fun callSingleDeleteRefundApi() {
@@ -385,7 +416,8 @@ class TestKotlin : AppCompatActivity(), UInterfaceCallBack, OnClickListener {
 
     override fun onMultiVendorRefund(responseMultiRefund: ResponseMultiVendorRefund?) {
         // Here May be more than one but for demo purpose taking zero index only
-        val generated: Generated? = responseMultiRefund?.multiVendorRefundData?.responseData?.generated?.get(0)
+        val generated: Generated? =
+            responseMultiRefund?.multiVendorRefundData?.responseData?.generated?.get(0)
         refundOrderIdMultiRefund = generated?.refundOrderId
         refundArnMultiRefund = generated?.refundArn
         orderIdMultiRefund = generated?.orderId
@@ -466,8 +498,8 @@ class TestKotlin : AppCompatActivity(), UInterfaceCallBack, OnClickListener {
                     true
                 )
 
-                tvWhiteLabel.setBackgroundColor(ContextCompat.getColor(this, R.color.gray))
-                tvNonWhiteLabel.setBackgroundColor(ContextCompat.getColor(this, R.color.green))
+//                tvWhiteLabel.setBackgroundColor(ContextCompat.getColor(this, R.color.gray))
+//                tvNonWhiteLabel.setBackgroundColor(ContextCompat.getColor(this, R.color.green))
             }
 
             R.id.tvWhiteLabel -> {
@@ -483,8 +515,8 @@ class TestKotlin : AppCompatActivity(), UInterfaceCallBack, OnClickListener {
                     true
                 )
                 //  tvWhiteLabel.setTextColor(resources.getColor(R.color.green))
-                tvWhiteLabel.setBackgroundColor(ContextCompat.getColor(this, R.color.green))
-                tvNonWhiteLabel.setBackgroundColor(ContextCompat.getColor(this, R.color.gray))
+//                tvWhiteLabel.setBackgroundColor(ContextCompat.getColor(this, R.color.green))
+//                tvNonWhiteLabel.setBackgroundColor(ContextCompat.getColor(this, R.color.gray))
             }
 
             R.id.tvAddCard -> {
