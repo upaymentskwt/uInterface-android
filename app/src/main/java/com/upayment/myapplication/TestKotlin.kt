@@ -208,7 +208,7 @@ class TestKotlin : AppCompatActivity(), UInterfaceCallBack, OnClickListener {
             notificationType = "email"
             // Set other properties as needed
         }
-        UInterfaceSDK.processPayment(eventCreateInvoice, this)
+        UInterfaceSDK.createPayment(eventCreateInvoice, this)
     }
 
     private fun callChargeApi() {
@@ -259,7 +259,7 @@ class TestKotlin : AppCompatActivity(), UInterfaceCallBack, OnClickListener {
             // Set other properties as needed
         }
 
-        UInterfaceSDK.processPayment(eventCharge, this)
+        UInterfaceSDK.createPayment(eventCharge, this)
     }
 
     //Multi Charge API
@@ -342,7 +342,7 @@ class TestKotlin : AppCompatActivity(), UInterfaceCallBack, OnClickListener {
             // Set other properties as needed
         }
 
-        UInterfaceSDK.processPayment(eventCharge, this)
+        UInterfaceSDK.createPayment(eventCharge, this)
     }
 
     override fun onPaymentProcessed(paymentData: UPaymentData) {
@@ -397,7 +397,7 @@ class TestKotlin : AppCompatActivity(), UInterfaceCallBack, OnClickListener {
             runOnUiThread(Runnable {
                 Toast.makeText(
                     this@TestKotlin,
-                    "RefundID" + invoiceResponse.refundOrderId,
+                    "RefundID: " + invoiceResponse.refundOrderId,
                     Toast.LENGTH_SHORT
                 ).show()
             })
@@ -408,7 +408,7 @@ class TestKotlin : AppCompatActivity(), UInterfaceCallBack, OnClickListener {
         runOnUiThread(Runnable {
             Toast.makeText(
                 this@TestKotlin,
-                singleDeleteRefundResponse?.message + "Delete Refund ID" + singleDeleteRefundResponse?.refundOrderId,
+                singleDeleteRefundResponse?.message + " - Delete Refund ID: " + singleDeleteRefundResponse?.refundOrderId,
                 Toast.LENGTH_SHORT
             ).show()
         })
@@ -426,7 +426,7 @@ class TestKotlin : AppCompatActivity(), UInterfaceCallBack, OnClickListener {
         runOnUiThread(Runnable {
             Toast.makeText(
                 this@TestKotlin,
-                responseMultiRefund?.message + "MultiRefundId:" + responseMultiRefund?.multiVendorRefundData?.responseData?.generated?.get(
+                responseMultiRefund?.message + "MultiRefundId: " + responseMultiRefund?.multiVendorRefundData?.responseData?.generated?.get(
                     0
                 )?.refundOrderId,
                 Toast.LENGTH_SHORT
@@ -439,7 +439,7 @@ class TestKotlin : AppCompatActivity(), UInterfaceCallBack, OnClickListener {
             runOnUiThread(Runnable {
                 Toast.makeText(
                     this@TestKotlin,
-                    retriveCard.message + "card No:" + retriveCard.cardData.customerCards?.get(0)?.number,
+                    retriveCard.message + "card No: " + retriveCard.cardData.customerCards?.get(0)?.number,
                     Toast.LENGTH_SHORT
                 ).show()
             })
