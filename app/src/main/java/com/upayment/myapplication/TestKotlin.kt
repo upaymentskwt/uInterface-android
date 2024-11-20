@@ -48,7 +48,9 @@ class TestKotlin : AppCompatActivity(), UInterfaceCallBack, OnClickListener {
     private lateinit var tvGetCustomerToken: TextView
     private lateinit var swtich: SwitchCompat
 
-    private var isWhiteLabeledStatus = false
+    private var isWhiteLabeledStatus = true
+
+    var customerToken = "1234567890851"
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -96,7 +98,10 @@ class TestKotlin : AppCompatActivity(), UInterfaceCallBack, OnClickListener {
         swtich.setOnCheckedChangeListener { _, isChecked ->
             isWhiteLabeledStatus = isChecked
             if (isChecked) {
-                val tokenWhiteLabel = "e66a94d579cf75fba327ff716ad68c53aae11528"
+//                val tokenWhiteLabel = "e66a94d579cf75fba327ff716ad68c53aae11528"    // SANDBOX
+                val tokenWhiteLabel = "e66a94d579cf75fba327ff716ad68c53aae11528"  // PROD
+                customerToken = "889867836" // replace your customer token
+
                 //Move to Application
                 // No Need to call this :At a time one Auth Header Token will be used .
                 // If you like to switch from Non white label to white label or wise versa then need to call
@@ -108,6 +113,7 @@ class TestKotlin : AppCompatActivity(), UInterfaceCallBack, OnClickListener {
                 )
             } else {
                 val tokenNonWhiteLabel = "jtest123"
+                customerToken = "1234567890851" // replace your customer token
                 //Move to Application
                 // No Need to call this :At a time one Auth Header Token will be used .
                 // If you like to switch from Non white label to white label or wise versa then need to call
@@ -184,11 +190,11 @@ class TestKotlin : AppCompatActivity(), UInterfaceCallBack, OnClickListener {
             }
             language = "en"
             isSaveCard = false
-            isWhiteLabeled = isWhiteLabeledStatus
+//            isWhiteLabeled = isWhiteLabeledStatus
             tokens {
                 kFast = ""
                 creditCard = ""
-                customerUniqueToken = "889867836"
+                customerUniqueToken = customerToken
             }
             reference {
                 id = "123459865234889"
@@ -205,7 +211,7 @@ class TestKotlin : AppCompatActivity(), UInterfaceCallBack, OnClickListener {
             notificationUrl = "https://webhook.site/92eb6888-362b-4874-840f-3fff620f7cf4"
             returnUrl = "https://upayments.com/en/"
             cancelUrl = "https://developers.upayments.com/"
-            notificationType = "email"
+            notificationType = "all" // all/sms/email
             // Set other properties as needed
         }
         UInterfaceSDK.createPayment(eventCreateInvoice, this)
@@ -230,7 +236,7 @@ class TestKotlin : AppCompatActivity(), UInterfaceCallBack, OnClickListener {
                 amount = 50.100f
             }
             paymentGateway {
-                src = "knet"
+                src = "cc"
             }
             language = "en"
             isSaveCard = false
@@ -238,7 +244,7 @@ class TestKotlin : AppCompatActivity(), UInterfaceCallBack, OnClickListener {
             tokens {
                 kFast = ""
                 creditCard = ""
-                customerUniqueToken = "889867836"
+                customerUniqueToken = customerToken
             }
             reference {
                 id = "123459865234889"
@@ -297,7 +303,7 @@ class TestKotlin : AppCompatActivity(), UInterfaceCallBack, OnClickListener {
             tokens {
                 kFast = ""
                 creditCard = ""
-                customerUniqueToken = "889867836"
+                customerUniqueToken = customerToken
             }
             reference {
                 id = "123459865234889"
@@ -397,7 +403,7 @@ class TestKotlin : AppCompatActivity(), UInterfaceCallBack, OnClickListener {
             runOnUiThread(Runnable {
                 Toast.makeText(
                     this@TestKotlin,
-                    "RefundID: " + invoiceResponse.refundOrderId,
+                    "RefundID" + invoiceResponse.refundOrderId,
                     Toast.LENGTH_SHORT
                 ).show()
             })
@@ -408,7 +414,7 @@ class TestKotlin : AppCompatActivity(), UInterfaceCallBack, OnClickListener {
         runOnUiThread(Runnable {
             Toast.makeText(
                 this@TestKotlin,
-                singleDeleteRefundResponse?.message + " - Delete Refund ID: " + singleDeleteRefundResponse?.refundOrderId,
+                singleDeleteRefundResponse?.message + "Delete Refund ID" + singleDeleteRefundResponse?.refundOrderId,
                 Toast.LENGTH_SHORT
             ).show()
         })
@@ -426,7 +432,7 @@ class TestKotlin : AppCompatActivity(), UInterfaceCallBack, OnClickListener {
         runOnUiThread(Runnable {
             Toast.makeText(
                 this@TestKotlin,
-                responseMultiRefund?.message + "MultiRefundId: " + responseMultiRefund?.multiVendorRefundData?.responseData?.generated?.get(
+                responseMultiRefund?.message + "MultiRefundId:" + responseMultiRefund?.multiVendorRefundData?.responseData?.generated?.get(
                     0
                 )?.refundOrderId,
                 Toast.LENGTH_SHORT
@@ -439,7 +445,7 @@ class TestKotlin : AppCompatActivity(), UInterfaceCallBack, OnClickListener {
             runOnUiThread(Runnable {
                 Toast.makeText(
                     this@TestKotlin,
-                    retriveCard.message + "card No: " + retriveCard.cardData.customerCards?.get(0)?.number,
+                    retriveCard.message + "card No:" + retriveCard.cardData.customerCards?.get(0)?.number,
                     Toast.LENGTH_SHORT
                 ).show()
             })
@@ -485,39 +491,39 @@ class TestKotlin : AppCompatActivity(), UInterfaceCallBack, OnClickListener {
                 callMultiDeleteRefundApi()
             }
 
-            R.id.tvNonWhiteLabel -> {
-                isWhiteLabeledStatus = false
-                val tokenNonWhiteLabel = "jtest123"
-                //Move to Application
-                // No Need to call this :At a time one Auth Header Token will be used .
-                // If you like to switch from Non white label to white label or wise versa then need to call
-                UInterfaceSDK.initializeDebugOnly(
-                    applicationContext,
-                    tokenNonWhiteLabel,
-                    Environment.SANDBOX,
-                    true
-                )
+//            R.id.tvNonWhiteLabel -> {
+//                isWhiteLabeledStatus = false
+//                val tokenNonWhiteLabel = "jtest123"
+//                //Move to Application
+//                // No Need to call this :At a time one Auth Header Token will be used .
+//                // If you like to switch from Non white label to white label or wise versa then need to call
+//                UInterfaceSDK.initializeDebugOnly(
+//                    applicationContext,
+//                    tokenNonWhiteLabel,
+//                    Environment.SANDBOX,
+//                    true
+//                )
+//
+////                tvWhiteLabel.setBackgroundColor(ContextCompat.getColor(this, R.color.gray))
+////                tvNonWhiteLabel.setBackgroundColor(ContextCompat.getColor(this, R.color.green))
+//            }
 
-//                tvWhiteLabel.setBackgroundColor(ContextCompat.getColor(this, R.color.gray))
-//                tvNonWhiteLabel.setBackgroundColor(ContextCompat.getColor(this, R.color.green))
-            }
-
-            R.id.tvWhiteLabel -> {
-                isWhiteLabeledStatus = true
-                val tokenWhiteLabel = "e66a94d579cf75fba327ff716ad68c53aae11528"
-                //Move to Application
-                // No Need to call this :At a time one Auth Header Token will be used .
-                // If you like to switch from Non white label to white label or wise versa then need to call
-                UInterfaceSDK.initializeDebugOnly(
-                    applicationContext,
-                    tokenWhiteLabel,
-                    Environment.PRODUCTION,
-                    true
-                )
-                //  tvWhiteLabel.setTextColor(resources.getColor(R.color.green))
-//                tvWhiteLabel.setBackgroundColor(ContextCompat.getColor(this, R.color.green))
-//                tvNonWhiteLabel.setBackgroundColor(ContextCompat.getColor(this, R.color.gray))
-            }
+//            R.id.tvWhiteLabel -> {
+//                isWhiteLabeledStatus = true
+//                val tokenWhiteLabel = "e66a94d579cf75fba327ff716ad68c53aae11528"
+//                //Move to Application
+//                // No Need to call this :At a time one Auth Header Token will be used .
+//                // If you like to switch from Non white label to white label or wise versa then need to call
+//                UInterfaceSDK.initializeDebugOnly(
+//                    applicationContext,
+//                    tokenWhiteLabel,
+//                    Environment.SANDBOX,
+//                    true
+//                )
+//                //  tvWhiteLabel.setTextColor(resources.getColor(R.color.green))
+////                tvWhiteLabel.setBackgroundColor(ContextCompat.getColor(this, R.color.green))
+////                tvNonWhiteLabel.setBackgroundColor(ContextCompat.getColor(this, R.color.gray))
+//            }
 
             R.id.tvAddCard -> {
                 callAddCard()
@@ -535,14 +541,13 @@ class TestKotlin : AppCompatActivity(), UInterfaceCallBack, OnClickListener {
     }
 
     private fun callRetrieveCard() {
-        val customerUniqueToken = "88986783663"
-        UInterfaceSDK.retrieveCustomerCards(customerUniqueToken, this)
+        UInterfaceSDK.retrieveCustomerCards(customerToken, this)
     }
 
     private fun callAddCard() {
         val addCardCustomer = addCardCustomer {
             returnUrl = "https://upayments.com/en/"
-            customerUniqueToken = 889867836//1234567890844
+            customerUniqueToken = 1234567890850 //889867836//1234567890844
         }
 
         UInterfaceSDK.addCardDetails(addCardCustomer, this)

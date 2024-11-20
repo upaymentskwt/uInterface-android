@@ -22,7 +22,8 @@
         <androidx.appcompat.widget.SwitchCompat
             android:id="@+id/swtich"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:checked="true" />
 
         <TextView
             android:id="@+id/tvWhiteLabel"
