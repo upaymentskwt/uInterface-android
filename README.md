@@ -25,24 +25,25 @@ uInterfaceSDK is a versatile SDK designed to simplify the integration of user in
 
 ## Installation Guide
 
-Follow the steps below to integrate the `uinterfacesdk.aar` library into your Android project.
+Follow the steps below to integrate the `uinterfacesdk` library into your Android project.
 
-#### Step 1: Download the Sample Project
-- Download the sample project provided above and locate the `uinterfacesdk.aar` file.
-  - Path: `app/libs/uinterfacesdk.aar`
+[//]: # ()
+[//]: # (#### Step 1: Download the Sample Project)
+[//]: # (- Download the sample project provided above and locate the `uinterfacesdk.aar` file.)
+[//]: # (  - Path: `app/libs/uinterfacesdk.aar`)
+[//]: # ()
+[//]: # (#### Step 2: Add the `.aar` File to Your Project)
+[//]: # (- Copy the `uinterfacesdk.aar` file to your project:)
+[//]: # (  - Path: `your_project/app/libs/`)
+[//]: # (  - **Note**: If the `libs` folder does not exist in your project, you will need to create it manually.)
 
-#### Step 2: Add the `.aar` File to Your Project
-- Copy the `uinterfacesdk.aar` file to your project:
-  - Path: `your_project/app/libs/`
-  - **Note**: If the `libs` folder does not exist in your project, you will need to create it manually.
-
-#### Step 3: Update `build.gradle` (App Level)
+#### Step 1: Update `build.gradle` (App Level)
 - Open your `app/build.gradle` file and add the following dependencies:
 
     ```gradle
     dependencies {
-        // Include the uinterfacesdk.aar library
-        implementation files("libs/uinterfacesdk.aar")
+        // Include the uinterfacesdk library
+         implementation 'com.upayments:upaymentsdk:1.0.0'
         
         // Add additional required libraries
         implementation "androidx.core:core-ktx:1.7.0"
@@ -52,17 +53,17 @@ Follow the steps below to integrate the `uinterfacesdk.aar` library into your An
     }
     ```
 
-- **Note**: Ensure that you have already implemented the following libraries:
+[//]: # (- **Note**: Ensure that you have already implemented the following libraries:)
+[//]: # ()
+[//]: # (    ```gradle)
+[//]: # (    dependencies {)
+[//]: # (        implementation 'androidx.appcompat:appcompat:1.6.1')
+[//]: # (        implementation 'com.google.android.material:material:1.9.0')
+[//]: # (    })
+[//]: # (    ```)
 
-    ```gradle
-    dependencies {
-        implementation 'androidx.appcompat:appcompat:1.6.1'
-        implementation 'com.google.android.material:material:1.9.0'
-    }
-    ```
-
-#### Step 4: Sync the Project
-- After placing the `uinterfacesdk.aar` file and updating the `build.gradle`, sync the project with Gradle files to complete the installation.
+#### Step 2: Sync the Project
+- After placing the `uinterfacesdk` library and updating the `build.gradle`, sync the project with Gradle files to complete the installation.
 
 
 
@@ -219,8 +220,8 @@ For a complete example, check out our sample projects:
 
 ## Troubleshooting
 
-- **Issue: Unable to find the `uinterfacesdk.aar` file after download.**  
-  **Solution:** Ensure you have downloaded the sample project correctly and check the path `app/libs/uinterfacesdk.aar`. If the `libs` folder does not exist, create it manually and place the `.aar` file inside.
+[//]: # (- **Issue: Unable to find the `uinterfacesdk.aar` file after download.**  )
+[//]: # (  **Solution:** Ensure you have downloaded the sample project correctly and check the path `app/libs/uinterfacesdk.aar`. If the `libs` folder does not exist, create it manually and place the `.aar` file inside.)
 
 - **Issue: The SDK initialization fails with a null pointer exception.**  
   **Solution:** Verify that you have correctly initialized the SDK in the `onCreate()` method of your `Application` class. Ensure that `API_KEY`, `Environment`, and `ENABLE_LOGGING` parameters are set correctly.
