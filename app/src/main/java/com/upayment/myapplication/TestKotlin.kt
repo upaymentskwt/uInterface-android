@@ -46,11 +46,11 @@ class TestKotlin : AppCompatActivity(), UInterfaceCallBack, OnClickListener {
     private lateinit var tvNonWhiteLabel: TextView
     private lateinit var tvWhiteLabel: TextView
     private lateinit var tvGetCustomerToken: TextView
-    private lateinit var swtich: SwitchCompat
+    private lateinit var switch: SwitchCompat
 
     private var isWhiteLabeledStatus = true
 
-    var customerToken = "1234567890851"
+    var customerToken = "1234567890844"
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -73,7 +73,7 @@ class TestKotlin : AppCompatActivity(), UInterfaceCallBack, OnClickListener {
         tvNonWhiteLabel = findViewById(R.id.tvNonWhiteLabel)
         tvWhiteLabel = findViewById(R.id.tvWhiteLabel)
         tvGetCustomerToken = findViewById(R.id.tvGetCustomerToken)
-        swtich = findViewById(R.id.swtich)
+        switch = findViewById(R.id.swtich)
 
         tvChargeAPI.setOnClickListener(this)
         tvChargeAPI2.setOnClickListener(this)
@@ -95,12 +95,17 @@ class TestKotlin : AppCompatActivity(), UInterfaceCallBack, OnClickListener {
 //        tvNonWhiteLabel.setBackgroundColor(ContextCompat.getColor(this, R.color.green))
 
         // this is only testing
-        swtich.setOnCheckedChangeListener { _, isChecked ->
+        switch.setOnCheckedChangeListener { _, isChecked ->
             isWhiteLabeledStatus = isChecked
             if (isChecked) {
 //                val tokenWhiteLabel = "e66a94d579cf75fba327ff716ad68c53aae11528"    // SANDBOX
-                val tokenWhiteLabel = "e66a94d579cf75fba327ff716ad68c53aae11528"  // PROD
-                customerToken = "889867836" // replace your customer token
+                val tokenWhiteLabel = "6407c050db6642c64a204eb8e1591c3c07a8ac49"  // PROD
+                customerToken = "1234567890845" // replace your customer token
+                // mane tamari apk apo tu aema test kari ne check karu
+                // apne android app & iOS app same work karvi joie & iOS approved che
+                // ios ma je token & key che e pramane set kari ne check karvu padshe
+                // apk ka video hoy to apjo to hu perfect check kari saku
+
 
                 //Move to Application
                 // No Need to call this :At a time one Auth Header Token will be used .
@@ -125,6 +130,8 @@ class TestKotlin : AppCompatActivity(), UInterfaceCallBack, OnClickListener {
                 )
             }
         }
+
+        switch.isChecked = !switch.isChecked
     }
 
     private fun callSingleDeleteRefundApi() {

@@ -29,6 +29,6 @@ class TestApplication : Application() {
         super.onCreate()
 
         // Initialize UPaymentGateway for the application.
-        UInterfaceSDK.initialize(this, API_KEY, ENVIRONMENT, ENABLE_LOGGING)
+//        UInterfaceSDK.initialize(this, API_KEY, ENVIRONMENT, ENABLE_LOGGING)
     }
 }
