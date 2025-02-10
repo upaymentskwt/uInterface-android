@@ -13,10 +13,11 @@
         <TextView
             android:id="@+id/tvNonWhiteLabel"
             android:layout_width="0dp"
-            android:layout_height="30dp"
+            android:layout_height="35dp"
             android:layout_weight="1"
             android:gravity="center"
             android:text="Test Cases Non white Label"
+            android:textSize="11sp"
             tools:ignore="HardcodedText" />
 
         <androidx.appcompat.widget.SwitchCompat
@@ -28,10 +29,11 @@
         <TextView
             android:id="@+id/tvWhiteLabel"
             android:layout_width="0dp"
-            android:layout_height="30dp"
+            android:layout_height="35dp"
             android:layout_weight="1"
             android:gravity="center"
             android:text="Test Cases white Label"
+            android:textSize="11sp"
             tools:ignore="HardcodedText" />
 
     </LinearLayout>

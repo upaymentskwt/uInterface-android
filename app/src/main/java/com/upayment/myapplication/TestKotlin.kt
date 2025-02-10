@@ -84,42 +84,28 @@ class TestKotlin : AppCompatActivity(), UInterfaceCallBack, OnClickListener {
         tvMultiDeleteRefund.setOnClickListener(this)
         tvAddCard.setOnClickListener(this)
         tvRetrieveCard.setOnClickListener(this)
-//        tvNonWhiteLabel.setOnClickListener(this)
-//        tvWhiteLabel.setOnClickListener(this)
         tvGetCustomerToken.setOnClickListener(this)
-
-
-        // Get Customer Unique Token
-        //  UPaymentGateway.getInstance().getCustomerUniqueToken(String(),this)
-//        tvWhiteLabel.setBackgroundColor(ContextCompat.getColor(this, R.color.gray))
-//        tvNonWhiteLabel.setBackgroundColor(ContextCompat.getColor(this, R.color.green))
 
         // this is only testing
         switch.setOnCheckedChangeListener { _, isChecked ->
             isWhiteLabeledStatus = isChecked
             if (isChecked) {
-//                val tokenWhiteLabel = "e66a94d579cf75fba327ff716ad68c53aae11528"    // SANDBOX
-                val tokenWhiteLabel = "6407c050db6642c64a204eb8e1591c3c07a8ac49"  // PROD
+                val tokenWhiteLabel = "e66a94d579cf75fba327ff716ad68c53aae11528"    // SANDBOX
+//                val tokenWhiteLabel = "6407c050db6642c64a204eb8e1591c3c07a8ac49"  // PROD
                 customerToken = "1234567890845" // replace your customer token
-                // mane tamari apk apo tu aema test kari ne check karu
-                // apne android app & iOS app same work karvi joie & iOS approved che
-                // ios ma je token & key che e pramane set kari ne check karvu padshe
-                // apk ka video hoy to apjo to hu perfect check kari saku
 
-
-                //Move to Application
                 // No Need to call this :At a time one Auth Header Token will be used .
                 // If you like to switch from Non white label to white label or wise versa then need to call
                 UInterfaceSDK.initializeDebugOnly(
                     applicationContext,
                     tokenWhiteLabel,
-                    Environment.PRODUCTION,
+                    Environment.SANDBOX,
                     true
                 )
             } else {
                 val tokenNonWhiteLabel = "jtest123"
                 customerToken = "1234567890851" // replace your customer token
-                //Move to Application
+
                 // No Need to call this :At a time one Auth Header Token will be used .
                 // If you like to switch from Non white label to white label or wise versa then need to call
                 UInterfaceSDK.initializeDebugOnly(
