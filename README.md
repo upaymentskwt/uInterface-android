@@ -9,6 +9,7 @@ uInterfaceSDK is a versatile SDK designed to simplify the integration of user in
 
 - [Requirements](#requirements)
 - [Installation Guide](#installation-guide)
+- [Manual Installation Guide](#installation-guide)
 - [Integration Guide](#integration-guide)
 - [Usage](#usage)
 - [Example](#example)
@@ -36,6 +37,7 @@ Follow the steps below to integrate the `uinterfacesdk` library into your Androi
 [//]: # (- Copy the `uinterfacesdk.aar` file to your project:)
 [//]: # (  - Path: `your_project/app/libs/`)
 [//]: # (  - **Note**: If the `libs` folder does not exist in your project, you will need to create it manually.)
+
 
 #### Step 1: Update `build.gradle` (App Level)
 - Open your `app/build.gradle` file and add the following dependencies:
@@ -66,7 +68,36 @@ Follow the steps below to integrate the `uinterfacesdk` library into your Androi
 - After placing the `uinterfacesdk` library and updating the `build.gradle`, sync the project with Gradle files to complete the installation.
 
 
+## Manual Installation Guide
 
+### Step 1: Download the SDK
+Visit the official uPayment SDK page:uPayment SDK on Sonatype
+Download the latest .aar file for the SDK.
+
+### Step 2: Add the SDK to Your Android Project
+Copy the downloaded .aar file into the libs folder of your Android project. If the libs folder does not exist, create one inside app.
+Open your project's build.gradle file (Module: app) and ensure that the following configurations are added:
+
+```android {
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.aar'])
+}
+```
+
+Sync the project to apply the changes.
+
+## Troubleshooting
+
+Ensure that the .aar file is correctly placed in the libs directory.
+Check that Gradle syncs successfully after adding the dependency.
+
+If facing issues, refer to the official uPayment documentation or raise a GitHub issue.
 
 ## Integration Guide
 
