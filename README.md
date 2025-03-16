@@ -43,7 +43,7 @@ Follow the steps below to integrate the `uinterfacesdk` library into your Androi
     ```gradle
     dependencies {
         // Include the uinterfacesdk library
-         implementation 'com.upayments:upaymentsdk:1.0.0'
+         implementation 'com.upayments:upaymentsdk:1.0.1'
         
         // Add additional required libraries
         implementation "androidx.core:core-ktx:1.7.0"
