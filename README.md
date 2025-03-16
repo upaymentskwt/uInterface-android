@@ -9,7 +9,7 @@ uInterfaceSDK is a versatile SDK designed to simplify the integration of user in
 
 - [Requirements](#requirements)
 - [Installation Guide](#installation-guide)
-- [Manual Installation Guide](#installation-guide)
+- [Manual Installation Guide](#manual-installation-guide)
 - [Integration Guide](#integration-guide)
 - [Usage](#usage)
 - [Example](#example)
