@@ -34,11 +34,8 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-//    implementation files('libs/UpaymentSDK-debug.aar')
-//    implementation files('libs/uinterfacesdk.aar')
-    implementation 'com.upayments:upaymentsdk:1.0.0'
+    implementation 'com.upayments:upaymentsdk:1.0.1'
 
-//    implementation project(path: ':UpaymentSDK')
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.9.0'
